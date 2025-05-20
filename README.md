@@ -65,7 +65,16 @@ To set up and run the backend, follow these steps:
    npm i nodemon -D
    ```
 
-4. Start the development server:
+4. Set up the database:
+   - Create a `.env` file in the root directory.
+   - Add the following environment variables:
+     ```
+     PORT=5000
+     MONGO_URI=<your-mongodb-connection-string>
+     ```
+   - Replace `<your-mongodb-connection-string>` with your actual MongoDB connection string.
+
+5. Start the development server:
    ```bash
    npm run dev
    ```
