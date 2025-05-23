@@ -23,6 +23,9 @@ A brief description of the project, its purpose, and the main features.
   - [Product Routes](#product-routes)
     - [Routes](#routes)
     - [Environment Variables](#environment-variables-1)
+  - [Cart Routes](#cart-routes)
+    - [Routes](#routes-1)
+    - [Environment Variables](#environment-variables-2)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -184,6 +187,41 @@ UPSTASH_REDIS_URL=<your-upstash-redis-url>
 CLOUDINARY_CLOUD_NAME=<cloudinary-cloud-name>
 CLOUDINARY_API_KEY=<cloudinary-api-key>
 CLOUDINARY_API_SECRET=<cloudinary-api-secret>
+```
+
+## Cart Routes
+
+The application provides a set of routes to manage the shopping cart, allowing users to add, update, and remove products from their cart.
+
+### Routes
+1. **Get Cart Products**  
+   `GET /api/cart`  
+   - Protected route.  
+   - Fetches all products in the user's cart, including their quantities.
+
+2. **Add to Cart**  
+   `POST /api/cart`  
+   - Protected route.  
+   - Adds a product to the user's cart.  
+   - If the product already exists in the cart, its quantity is incremented.
+
+3. **Remove All from Cart**  
+   `DELETE /api/cart`  
+   - Protected route.  
+   - Removes all products from the user's cart.  
+   - If a `productId` is provided in the request body, only that product is removed.
+
+4. **Update Quantity**  
+   `PUT /api/cart/:id`  
+   - Protected route.  
+   - Updates the quantity of a specific product in the user's cart.  
+   - If the quantity is set to `0`, the product is removed from the cart.
+
+### Environment Variables
+Ensure the following environment variables are set in the `.env` file:
+```
+MONGO_URI=<mongodb-connection-string>
+ACCESS_TOKEN_SECRET=<access-token-secret>
 ```
 
 ## Deployment
