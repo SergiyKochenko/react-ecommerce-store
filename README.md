@@ -20,6 +20,9 @@ A brief description of the project, its purpose, and the main features.
     - [Authentication Flow](#authentication-flow)
     - [Upstash Redis Integration](#upstash-redis-integration)
     - [Environment Variables](#environment-variables)
+  - [Product Routes](#product-routes)
+    - [Routes](#routes)
+    - [Environment Variables](#environment-variables-1)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -129,6 +132,58 @@ Ensure the following environment variables are set in the `.env` file:
 ACCESS_TOKEN_SECRET=<your-access-token-secret>
 REFRESH_TOKEN_SECRET=<your-refresh-token-secret>
 UPSTASH_REDIS_URL=<your-upstash-redis-url>
+```
+
+## Product Routes
+
+The application provides a set of routes to manage products, including fetching, creating, updating, and deleting products. It integrates with **Upstash Redis** for caching and **Cloudinary** for image storage.
+
+### Routes
+1. **Get All Products**  
+   `GET /api/products`  
+   - Protected route (Admin only).  
+   - Fetches all products from the database.
+
+2. **Get Featured Products**  
+   `GET /api/products/featured`  
+   - Fetches featured products.  
+   - Uses **Upstash Redis** to cache featured products for faster access.  
+   - Visit [Upstash Console](https://console.upstash.com/redis?teamid=0) to monitor and manage the Redis cache.
+
+3. **Get Products by Category**  
+   `GET /api/products/category/:category`  
+   - Fetches products filtered by category.
+
+4. **Get Recommended Products**  
+   `GET /api/products/recommendations`  
+   - Fetches a random selection of 3 products for recommendations.
+
+5. **Create a Product**  
+   `POST /api/products`  
+   - Protected route (Admin only).  
+   - Creates a new product.  
+   - Uploads product images to **Cloudinary**.  
+   - Visit [Cloudinary Console](https://console.cloudinary.com/) to manage uploaded images.
+
+6. **Toggle Featured Product**  
+   `PATCH /api/products/:id`  
+   - Protected route (Admin only).  
+   - Toggles the `isFeatured` status of a product.  
+   - Updates the featured products cache in **Upstash Redis**.
+
+7. **Delete a Product**  
+   `DELETE /api/products/:id`  
+   - Protected route (Admin only).  
+   - Deletes a product from the database.  
+   - Removes the associated image from **Cloudinary**.
+
+### Environment Variables
+Ensure the following environment variables are set in the `.env` file:
+```
+UPSTASH_REDIS_URL=<your-upstash-redis-url>
+CLOUDINARY_CLOUD_NAME=<cloudinary-cloud-name>
+CLOUDINARY_API_KEY=<cloudinary-api-key>
+CLOUDINARY_API_SECRET=<cloudinary-api-secret>
 ```
 
 ## Deployment
