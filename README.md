@@ -26,6 +26,9 @@ A brief description of the project, its purpose, and the main features.
   - [Cart Routes](#cart-routes)
     - [Routes](#routes-1)
     - [Environment Variables](#environment-variables-2)
+  - [Coupon Routes](#coupon-routes)
+    - [Routes](#routes-2)
+    - [Environment Variables](#environment-variables-3)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -216,6 +219,29 @@ The application provides a set of routes to manage the shopping cart, allowing u
    - Protected route.  
    - Updates the quantity of a specific product in the user's cart.  
    - If the quantity is set to `0`, the product is removed from the cart.
+
+### Environment Variables
+Ensure the following environment variables are set in the `.env` file:
+```
+MONGO_URI=<mongodb-connection-string>
+ACCESS_TOKEN_SECRET=<access-token-secret>
+```
+
+## Coupon Routes
+
+The application provides a set of routes to manage coupons, allowing users to retrieve and validate discount codes.
+
+### Routes
+1. **Get Active Coupon**  
+   `GET /api/coupons`  
+   - Protected route.  
+   - Fetches the active coupon for the logged-in user.
+
+2. **Validate Coupon**  
+   `GET /api/coupons/validate?code=<coupon-code>`  
+   - Protected route.  
+   - Validates the provided coupon code for the logged-in user.  
+   - Checks if the coupon is active and not expired.
 
 ### Environment Variables
 Ensure the following environment variables are set in the `.env` file:
