@@ -33,6 +33,10 @@ A brief description of the project, its purpose, and the main features.
     - [Routes](#routes-3)
     - [Stripe Integration](#stripe-integration)
     - [Environment Variables](#environment-variables-4)
+  - [Analytics Routes](#analytics-routes)
+    - [Routes](#routes-4)
+    - [Environment Variables](#environment-variables-5)
+  - [Backend Completion Status](#backend-completion-status)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -283,6 +287,40 @@ Ensure the following environment variables are set in the `.env` file:
 STRIPE_SECRET_KEY=<your-stripe-secret-key>
 CLIENT_URL=<your-client-url>
 ```
+
+## Analytics Routes
+
+The application provides analytics routes to retrieve key metrics and sales data for the admin dashboard.
+
+### Routes
+1. **Get Analytics Data**  
+   `GET /api/analytics`  
+   - Protected route (Admin only).  
+   - Returns the following metrics:
+     - Total users
+     - Total products
+     - Total sales
+     - Total revenue
+   - Also includes daily sales and revenue data for the last 7 days.
+
+### Environment Variables
+Ensure the following environment variables are set in the `.env` file:
+```
+MONGO_URI=<mongodb-connection-string>
+ACCESS_TOKEN_SECRET=<access-token-secret>
+```
+
+## Backend Completion Status
+
+The backend for the E-Commerce Store is fully implemented and tested using **Postman**. All endpoints have been verified for functionality, including:
+- **Authentication**: Signup, login, logout, token refresh, and profile retrieval.
+- **Products**: CRUD operations, featured products, recommendations, and category filtering.
+- **Cart**: Add, update, and remove products from the cart.
+- **Coupons**: Retrieve and validate discount codes.
+- **Payments**: Stripe integration for checkout sessions and payment success handling.
+- **Analytics**: Admin dashboard metrics and daily sales data.
+
+The backend is ready for deployment and integration with the frontend.
 
 ## Deployment
 
