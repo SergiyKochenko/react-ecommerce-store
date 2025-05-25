@@ -29,6 +29,10 @@ A brief description of the project, its purpose, and the main features.
   - [Coupon Routes](#coupon-routes)
     - [Routes](#routes-2)
     - [Environment Variables](#environment-variables-3)
+  - [Payment Routes](#payment-routes)
+    - [Routes](#routes-3)
+    - [Stripe Integration](#stripe-integration)
+    - [Environment Variables](#environment-variables-4)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -248,6 +252,36 @@ Ensure the following environment variables are set in the `.env` file:
 ```
 MONGO_URI=<mongodb-connection-string>
 ACCESS_TOKEN_SECRET=<access-token-secret>
+```
+
+## Payment Routes
+
+The application provides a set of routes to handle payments using **Stripe**. It supports creating checkout sessions and processing successful payments.
+
+### Routes
+1. **Create Checkout Session**  
+   `POST /api/payments/checkout-session`  
+   - Protected route.  
+   - Creates a Stripe checkout session for the provided products.  
+   - Optionally applies a coupon code for discounts.  
+   - If the total amount exceeds €200, a new coupon is generated for the user.
+
+2. **Checkout Success**  
+   `POST /api/payments/checkout-success`  
+   - Protected route.  
+   - Processes a successful payment.  
+   - Deactivates the used coupon (if any).  
+   - Creates a new order in the database.
+
+### Stripe Integration
+- The application uses **Stripe** for payment processing.  
+- Visit [Stripe Dashboard](https://dashboard.stripe.com/test/dashboard) to monitor and manage payments.
+
+### Environment Variables
+Ensure the following environment variables are set in the `.env` file:
+```
+STRIPE_SECRET_KEY=<your-stripe-secret-key>
+CLIENT_URL=<your-client-url>
 ```
 
 ## Deployment
