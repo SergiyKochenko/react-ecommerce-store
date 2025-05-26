@@ -37,6 +37,9 @@ A brief description of the project, its purpose, and the main features.
     - [Routes](#routes-4)
     - [Environment Variables](#environment-variables-5)
   - [Backend Completion Status](#backend-completion-status)
+  - [Frontend Setup with React](#frontend-setup-with-react)
+    - [Steps to Set Up the Frontend](#steps-to-set-up-the-frontend)
+    - [Additional Notes](#additional-notes)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -321,6 +324,69 @@ The backend for the E-Commerce Store is fully implemented and tested using **Pos
 - **Analytics**: Admin dashboard metrics and daily sales data.
 
 The backend is ready for deployment and integration with the frontend.
+
+## Frontend Setup with React
+
+The frontend of the E-Commerce Store is built using **React** and **Vite** for a fast and modern development experience. It also integrates **TailwindCSS** for styling.
+
+### Steps to Set Up the Frontend
+
+1. **Install Dependencies**  
+   Run the following command to install the required dependencies:
+   ```bash
+   npm i axios @stripe/stripe-js framer-motion lucide-react react-confetti react-hot-toast react-router-dom recharts zustand
+   ```
+
+2. **Create a Vite Project**  
+   Initialize a new Vite project in the `frontend` directory:
+   ```bash
+   npm create vite@latest .
+   ```
+   - Select `React` as the framework.
+   - Select `JavaScript` as the variant.
+
+3. **Install TailwindCSS**  
+   Follow the official guide to set up TailwindCSS with Vite:
+   ```bash
+   npm install -D tailwindcss@3 postcss autoprefixer
+   npx tailwindcss init -p
+   ```
+
+4. **Configure TailwindCSS**  
+   Update the `tailwind.config.js` file to include the paths to your template files:
+   ```javascript
+   // filepath: c:\Users\Sergiy\Desktop\Completed-Projects\e-commerce-store\frontend\tailwind.config.js
+   module.exports = {
+       content: [
+           "./index.html",
+           "./src/**/*.{js,ts,jsx,tsx}",
+       ],
+       theme: {
+           extend: {},
+       },
+       plugins: [],
+   };
+   ```
+
+5. **Add Tailwind Directives**  
+   Add the TailwindCSS directives to your `index.css` file:
+   ```css
+   /* filepath: c:\Users\Sergiy\Desktop\Completed-Projects\e-commerce-store\frontend\src\index.css */
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+6. **Start the Development Server**  
+   Run the following commands to start the development server:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+### Additional Notes
+- The frontend integrates **Stripe** for payment processing, **React Router** for navigation, and **Recharts** for analytics visualization.
+- Visit the [TailwindCSS Guide](https://v3.tailwindcss.com/docs/guides/vite) for more details on using TailwindCSS with Vite.
 
 ## Deployment
 
