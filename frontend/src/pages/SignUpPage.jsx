@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-// import { useUserStore } from "../stores/useUserStore";
+import { useUserStore } from "../stores/useUserStore";
 
 const SignUpPage = () => {
-  const loading = false; // Placeholder for loading state
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -13,27 +13,12 @@ const SignUpPage = () => {
 		confirmPassword: "",
 	});
 
+	const { signup, loading } = useUserStore();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		signup(formData);
 	};
-
-
-// const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//     confirmPassword: "",
-//   });
-
-//   const { signup, loading } = useUserStore();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     signup(formData);
-//   };
-
 
 	return (
 		<div className='flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
