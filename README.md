@@ -40,6 +40,10 @@ A brief description of the project, its purpose, and the main features.
   - [Frontend Setup with React](#frontend-setup-with-react)
     - [Steps to Set Up the Frontend](#steps-to-set-up-the-frontend)
     - [Additional Notes](#additional-notes)
+  - [Signup Page UI Design](#signup-page-ui-design)
+    - [Features](#features-1)
+    - [Styling](#styling)
+    - [Notifications](#notifications)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -387,6 +391,22 @@ The frontend of the E-Commerce Store is built using **React** and **Vite** for a
 ### Additional Notes
 - The frontend integrates **Stripe** for payment processing, **React Router** for navigation, and **Recharts** for analytics visualization.
 - Visit the [TailwindCSS Guide](https://v3.tailwindcss.com/docs/guides/vite) for more details on using TailwindCSS with Vite.
+
+## Signup Page UI Design
+
+The Signup Page allows users to create an account by providing their name, email, and password. It is designed with a clean and responsive layout using **React**, **TailwindCSS**, and **React Hot Toast** for notifications.
+
+### Features
+- **Input Fields**: Name, Email, and Password fields with validation.
+- **Submit Button**: A button to submit the signup form.
+- **Error Handling**: Displays error messages for invalid inputs or server errors.
+- **Success Notification**: Shows a success toast upon successful signup.
+
+### Styling
+The page uses **TailwindCSS** for styling, ensuring a responsive and modern design.
+
+### Notifications
+- **React Hot Toast** is used to display success and error messages.
 
 ## Deployment
 
