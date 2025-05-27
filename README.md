@@ -44,6 +44,14 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-1)
     - [Styling](#styling)
     - [Notifications](#notifications)
+  - [Login Page UI Design](#login-page-ui-design)
+    - [Features](#features-2)
+    - [Styling](#styling-1)
+    - [Notifications](#notifications-1)
+  - [Authentication Implementation](#authentication-implementation)
+    - [Features](#features-3)
+    - [Backend Implementation](#backend-implementation)
+    - [Frontend Integration](#frontend-integration)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -407,6 +415,45 @@ The page uses **TailwindCSS** for styling, ensuring a responsive and modern desi
 
 ### Notifications
 - **React Hot Toast** is used to display success and error messages.
+
+## Login Page UI Design
+
+The Login Page allows users to log in to their accounts by providing their email and password. It is designed with a clean and responsive layout using **React**, **TailwindCSS**, and **React Hot Toast** for notifications.
+
+### Features
+- **Input Fields**: Email and Password fields with validation.
+- **Submit Button**: A button to submit the login form.
+- **Error Handling**: Displays error messages for invalid inputs or server errors.
+- **Success Notification**: Shows a success toast upon successful login.
+
+### Styling
+The page uses **TailwindCSS** for styling, ensuring a responsive and modern design.
+
+### Notifications
+- **React Hot Toast** is used to display success and error messages.
+
+---
+
+## Authentication Implementation
+
+The authentication system is implemented using **JWT-based authentication** with access and refresh tokens. It ensures secure and efficient user authentication.
+
+### Features
+1. **Signup**: Allows users to create an account.
+2. **Login**: Authenticates users and issues tokens.
+3. **Logout**: Clears tokens from cookies and invalidates the refresh token.
+4. **Token Refresh**: Automatically refreshes the access token when it expires.
+5. **Profile Retrieval**: Fetches the authenticated user's profile.
+
+### Backend Implementation
+- **Access Token**: A short-lived token (15 minutes) stored in an HTTP-only cookie.
+- **Refresh Token**: A long-lived token (7 days) stored in an HTTP-only cookie and managed in **Upstash Redis**.
+- **Middleware**: Protects routes and verifies user roles (e.g., admin).
+
+### Frontend Integration
+- **State Management**: Uses **Zustand** to manage user state and authentication logic.
+- **Axios Interceptors**: Handles automatic token refresh for API requests.
+- **Protected Routes**: Ensures only authenticated users can access certain pages.
 
 ## Deployment
 
