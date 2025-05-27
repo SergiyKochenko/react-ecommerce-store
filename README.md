@@ -48,8 +48,13 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-2)
     - [Styling](#styling-1)
     - [Notifications](#notifications-1)
-  - [Authentication Implementation](#authentication-implementation)
+  - [Home Page UI Design](#home-page-ui-design)
     - [Features](#features-3)
+    - [Styling](#styling-2)
+    - [Animations](#animations)
+    - [API Integration](#api-integration)
+  - [Authentication Implementation](#authentication-implementation)
+    - [Features](#features-4)
     - [Backend Implementation](#backend-implementation)
     - [Frontend Integration](#frontend-integration)
   - [Deployment](#deployment)
@@ -431,6 +436,31 @@ The page uses **TailwindCSS** for styling, ensuring a responsive and modern desi
 
 ### Notifications
 - **React Hot Toast** is used to display success and error messages.
+
+## Home Page UI Design
+
+The Home Page serves as the main entry point for users, showcasing featured products, categories, and recommendations. It is designed with a clean and responsive layout using **React**, **TailwindCSS**, and **Framer Motion** for animations.
+
+### Features
+1. **Navbar**: Includes navigation links to different sections of the application (e.g., Home, Products, Cart, Login).
+2. **Hero Section**: A visually appealing banner with a call-to-action button.
+3. **Featured Products**: Displays a list of featured products fetched from the backend.
+4. **Categories**: Showcases product categories for easy navigation.
+5. **Recommendations**: Displays a random selection of recommended products.
+6. **Loading Spinner**: A spinner is displayed while data is being fetched.
+
+### Styling
+The page uses **TailwindCSS** for styling, ensuring a responsive and modern design.
+
+### Animations
+- **Framer Motion** can be integrated for smooth animations on product cards and sections.
+
+### API Integration
+- The page fetches data from the backend using **Axios**.
+- Endpoints used:
+  - `/api/products/featured`
+  - `/api/products/categories`
+  - `/api/products/recommendations`
 
 ---
 
