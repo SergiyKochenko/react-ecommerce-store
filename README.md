@@ -57,6 +57,11 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-4)
     - [Backend Implementation](#backend-implementation)
     - [Frontend Integration](#frontend-integration)
+  - [Admin Dashboard](#admin-dashboard)
+    - [Features](#features-5)
+    - [Styling and Animations](#styling-and-animations)
+    - [API Integration](#api-integration-1)
+    - [Access Control](#access-control)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -484,6 +489,38 @@ The authentication system is implemented using **JWT-based authentication** with
 - **State Management**: Uses **Zustand** to manage user state and authentication logic.
 - **Axios Interceptors**: Handles automatic token refresh for API requests.
 - **Protected Routes**: Ensures only authenticated users can access certain pages.
+
+## Admin Dashboard
+
+The Admin Dashboard provides tools for managing the e-commerce store, including product management, analytics, and more. It is accessible only to users with the "admin" role.
+
+### Features
+1. **Create Product**:  
+   - Allows admins to create new products by providing details such as name, description, price, category, and an image.
+   - Image uploads are supported via a file input.
+
+2. **Manage Products**:  
+   - Displays a list of all products with options to:
+     - Delete products.
+     - Toggle the "Featured" status of products.
+
+3. **View Analytics**:  
+   - Provides key metrics and insights, such as total users, total sales, and revenue trends.
+
+### Styling and Animations
+- The dashboard is styled using **TailwindCSS** for a modern and responsive design.
+- **Framer Motion** is used for smooth animations and transitions.
+
+### API Integration
+- The Admin Dashboard interacts with the backend using the following endpoints:
+  - `POST /api/products`: Create a new product.
+  - `GET /api/products`: Fetch all products.
+  - `PATCH /api/products/:id`: Toggle the "Featured" status of a product.
+  - `DELETE /api/products/:id`: Delete a product.
+  - `GET /api/analytics`: Fetch analytics data.
+
+### Access Control
+- The dashboard is protected and accessible only to authenticated users with the "admin" role. Unauthorized users are redirected to the login page.
 
 ## Deployment
 
