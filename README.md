@@ -62,6 +62,10 @@ A brief description of the project, its purpose, and the main features.
     - [Styling and Animations](#styling-and-animations)
     - [API Integration](#api-integration-1)
     - [Access Control](#access-control)
+  - [Category Page](#category-page)
+    - [Features](#features-6)
+    - [Styling and Animations](#styling-and-animations-1)
+    - [API Integration](#api-integration-2)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -521,6 +525,30 @@ The Admin Dashboard provides tools for managing the e-commerce store, including 
 
 ### Access Control
 - The dashboard is protected and accessible only to authenticated users with the "admin" role. Unauthorized users are redirected to the login page.
+
+## Category Page
+
+The Category Page displays products filtered by their category. It provides users with an easy way to browse products within a specific category.
+
+### Features
+1. **Dynamic Category Display**:  
+   - The page dynamically updates based on the selected category from the URL parameter.
+   - The category name is displayed as the page title.
+
+2. **Product Grid**:  
+   - Products are displayed in a responsive grid layout.
+   - Each product is shown using the `ProductCard` component, which includes the product's image, name, price, and an "Add to Cart" button.
+
+3. **No Products Found Message**:  
+   - If no products are available in the selected category, a message is displayed to inform the user.
+
+### Styling and Animations
+- The page is styled using **TailwindCSS** for a modern and responsive design.
+- **Framer Motion** is used for smooth animations when the page loads and when products are displayed.
+
+### API Integration
+- The Category Page fetches products from the backend using the following endpoint:
+  - `GET /api/products/category/:category`: Retrieves products filtered by the specified category.
 
 ## Deployment
 
