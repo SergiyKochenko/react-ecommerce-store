@@ -66,6 +66,10 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-6)
     - [Styling and Animations](#styling-and-animations-1)
     - [API Integration](#api-integration-2)
+  - [Cart Store](#cart-store)
+    - [Features](#features-7)
+    - [API Integration](#api-integration-3)
+    - [State Management](#state-management)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -549,6 +553,52 @@ The Category Page displays products filtered by their category. It provides user
 ### API Integration
 - The Category Page fetches products from the backend using the following endpoint:
   - `GET /api/products/category/:category`: Retrieves products filtered by the specified category.
+
+
+## Cart Store
+
+The Cart Store is implemented using **Zustand** for state management. It handles all cart-related operations, including adding, removing, and updating products in the cart, as well as applying coupons.
+
+### Features
+1. **Add to Cart**:  
+   - Adds a product to the cart.  
+   - If the product already exists, its quantity is incremented.
+
+2. **Remove from Cart**:  
+   - Removes a specific product from the cart.
+
+3. **Update Quantity**:  
+   - Updates the quantity of a specific product in the cart.  
+   - If the quantity is set to `0`, the product is removed.
+
+4. **Apply Coupon**:  
+   - Validates and applies a discount coupon to the cart.  
+   - Automatically recalculates the total price after applying the coupon.
+
+5. **Remove Coupon**:  
+   - Removes the applied coupon and recalculates the total price.
+
+6. **Calculate Totals**:  
+   - Calculates the subtotal and total price of the cart, including discounts from coupons.
+
+7. **Fetch Cart Items**:  
+   - Retrieves the current cart items from the backend.
+
+8. **Clear Cart**:  
+   - Clears all items from the cart.
+
+### API Integration
+- The Cart Store interacts with the backend using the following endpoints:
+  - `GET /api/cart`: Fetches all products in the user's cart.
+  - `POST /api/cart`: Adds a product to the cart.
+  - `DELETE /api/cart`: Removes a product or clears the cart.
+  - `PUT /api/cart/:id`: Updates the quantity of a product in the cart.
+  - `GET /api/coupons`: Fetches the user's active coupon.
+  - `POST /api/coupons/validate`: Validates and applies a coupon.
+
+### State Management
+- The Cart Store uses **Zustand** for efficient and lightweight state management.
+- It ensures that the cart state is synchronized with the backend and provides real-time updates to the UI.
 
 ## Deployment
 
