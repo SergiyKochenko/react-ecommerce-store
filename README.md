@@ -74,6 +74,10 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-8)
     - [Styling and Animations](#styling-and-animations-2)
     - [API Integration](#api-integration-4)
+  - [Stripe Payments Integration](#stripe-payments-integration)
+    - [Features](#features-9)
+    - [Implementation Details](#implementation-details)
+    - [Setup Instructions](#setup-instructions)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -640,6 +644,37 @@ The Cart Page allows users to view and manage the products they have added to th
   - `DELETE /api/cart`: Removes a product or clears the cart.
   - `POST /api/coupons/validate`: Validates and applies a coupon.
   - `POST /api/payments/create-checkout-session`: Initiates the Stripe checkout session.
+
+## Stripe Payments Integration
+
+This project integrates Stripe for secure payment processing.
+
+### Features
+- **Checkout Process**: Users can securely complete their purchases using Stripe Checkout.
+- **Payment Intents**: Handles payment lifecycles using Stripe's Payment Intents API.
+- **Cart Management**: Automatically clears the cart upon successful payment.
+- **Environment Variables**: Uses `STRIPE_PUBLIC_KEY` for the frontend and `STRIPE_SECRET_KEY` for the backend to securely manage API keys.
+
+### Implementation Details
+- **Frontend**:
+  - `OrderSummary.jsx`: Initiates the payment process by creating a Stripe Checkout session.
+  - `PurchaseSuccessPage.jsx`: Handles post-payment success logic, including clearing the cart.
+  - `PurchaseCancelPage.jsx`: Displays a cancellation message if the payment is not completed.
+  - Uses `@stripe/stripe-js` for secure payment tokenization and redirection.
+- **Backend**:
+  - `payment.route.js`: Defines routes for creating checkout sessions and handling payment success.
+  - `payment.controller.js`: Contains logic for interacting with Stripe's API.
+  - Protects sensitive routes using middleware.
+
+### Setup Instructions
+1. **Environment Variables**:
+   - Add `STRIPE_PUBLIC_KEY` to your `.env` file for the frontend.
+   - Add `STRIPE_SECRET_KEY` to your `.env` file for the backend.
+
+2. **Testing Payments**:
+   - Use Stripe's test card numbers (e.g., `4242 4242 4242 4242`) to simulate payments in test mode.
+
+For more details, refer to the [Stripe Documentation](https://stripe.com/docs).
 
 ## Deployment
 
