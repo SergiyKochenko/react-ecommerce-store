@@ -78,6 +78,12 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-9)
     - [Implementation Details](#implementation-details)
     - [Setup Instructions](#setup-instructions)
+  - [Coupons Management](#coupons-management)
+    - [Features](#features-10)
+    - [Implementation Details](#implementation-details-1)
+  - [Analytics Dashboard](#analytics-dashboard)
+    - [Features](#features-11)
+    - [Implementation Details](#implementation-details-2)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -675,6 +681,49 @@ This project integrates Stripe for secure payment processing.
    - Use Stripe's test card numbers (e.g., `4242 4242 4242 4242`) to simulate payments in test mode.
 
 For more details, refer to the [Stripe Documentation](https://stripe.com/docs).
+
+
+## Coupons Management
+
+This project includes a feature to manage and apply coupons for discounts.
+
+### Features
+- **Coupon Application**: Users can apply coupon codes to receive discounts on their orders.
+- **Coupon Validation**: Validates coupon codes before applying them to ensure they are active and applicable.
+- **Coupon Removal**: Users can remove applied coupons if they change their mind.
+- **Available Coupons Display**: Displays available coupons for the user.
+
+### Implementation Details
+- **Frontend**:
+  - `GiftCouponCard.jsx`: Handles the UI for applying, validating, and removing coupons.
+  - `useCartStore.js`: Manages the state of coupons and integrates with the backend for validation.
+- **Backend**:
+  - `coupon.route.js`: Defines routes for fetching and validating coupons.
+  - `coupon.controller.js`: Contains the logic for coupon validation and retrieval.
+
+---
+
+## Analytics Dashboard
+
+The project includes an analytics dashboard for administrators to monitor key metrics.
+
+### Features
+- **User Analytics**: Displays the total number of users.
+- **Product Analytics**: Shows the total number of products.
+- **Sales Analytics**: Tracks the total number of sales.
+- **Revenue Analytics**: Displays the total revenue generated.
+- **Daily Sales Chart**: Visualizes daily sales and revenue trends using a line chart.
+
+### Implementation Details
+- **Frontend**:
+  - `AnalyticsTab.jsx`: Displays the analytics dashboard with cards for key metrics and a line chart for daily trends.
+- **Backend**:
+  - `analytics.route.js`: Provides endpoints for fetching analytics data.
+  - `analytics.controller.js`: Contains the logic for aggregating and returning analytics data.
+
+---
+
+For more details, refer to the respective components and backend routes.
 
 ## Deployment
 
