@@ -84,6 +84,10 @@ A brief description of the project, its purpose, and the main features.
   - [Analytics Dashboard](#analytics-dashboard)
     - [Features](#features-11)
     - [Implementation Details](#implementation-details-2)
+  - [Featured Products Slider](#featured-products-slider)
+    - [Features](#features-12)
+    - [Implementation Details](#implementation-details-3)
+    - [Setup Instructions](#setup-instructions-1)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -724,6 +728,37 @@ The project includes an analytics dashboard for administrators to monitor key me
 ---
 
 For more details, refer to the respective components and backend routes.
+
+
+## Featured Products Slider
+
+This project includes a responsive slider to showcase featured products.
+
+### Features
+- **Responsive Design**: Adjusts the number of items displayed based on the screen size.
+- **Smooth Transitions**: Provides smooth sliding animations for a better user experience.
+- **Add to Cart**: Allows users to add featured products directly to their cart.
+- **Navigation Controls**: Includes "Previous" and "Next" buttons to navigate through the slider.
+
+### Implementation Details
+- **Frontend**:
+  - `FeaturedProducts.jsx`: Implements the slider functionality and handles responsiveness.
+  - Uses `lucide-react` for navigation icons and `zustand` for cart state management.
+- **Backend**:
+  - Provides an API endpoint to fetch featured products.
+
+### Setup Instructions
+1. **API Integration**:
+   - Ensure the backend provides a route to fetch featured products.
+   - Example: `/api/products/featured`.
+
+2. **Frontend Integration**:
+   - Pass the `featuredProducts` prop to the `FeaturedProducts` component with the data fetched from the backend.
+
+3. **Usage**:
+   - Include the `FeaturedProducts` component in the desired page or section of the application.
+
+For more details, refer to the `FeaturedProducts.jsx` component.
 
 ## Deployment
 
