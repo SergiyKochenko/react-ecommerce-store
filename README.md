@@ -760,6 +760,34 @@ This project includes a responsive slider to showcase featured products.
 
 For more details, refer to the `FeaturedProducts.jsx` component.
 
+
+## Axios Interceptors for Token Refresh
+
+This project includes Axios interceptors to handle token expiration and automatic refresh.
+
+### Features
+- **Automatic Token Refresh**: Automatically refreshes the access token when it expires.
+- **Retry Failed Requests**: Retries the original request after successfully refreshing the token.
+- **Global Error Handling**: Logs out the user and clears the session if the refresh token is invalid or expired.
+
+### Implementation Details
+- **Frontend**:
+  - `useUserStore.js`: Implements the logic for refreshing tokens and managing user authentication state.
+  - Axios interceptors are configured to detect `401 Unauthorized` responses and trigger the token refresh process.
+- **Backend**:
+  - Provides endpoints for refreshing tokens and validating user sessions.
+
+### Setup Instructions
+1. **Environment Variables**:
+   - Ensure the backend provides a refresh token endpoint (e.g., `/auth/refresh-token`).
+   - Configure the frontend Axios instance to point to the correct backend base URL.
+
+2. **Usage**:
+   - The Axios interceptors are automatically applied to all requests.
+   - If a token expires, the interceptor will handle the refresh process seamlessly.
+
+For more details, refer to the `useUserStore.js` file.
+
 ## Deployment
 
 Explain how the project was deployed, including:
