@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "../lib/axios";
 
 const stripePromise = loadStripe(
-	"pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // Actual Stripe public key Should be used here: TODO
+    "pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
 );
 
 const OrderSummary = () => {
