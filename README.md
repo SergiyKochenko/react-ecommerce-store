@@ -70,6 +70,10 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-7)
     - [API Integration](#api-integration-3)
     - [State Management](#state-management)
+  - [Cart Page](#cart-page)
+    - [Features](#features-8)
+    - [Styling and Animations](#styling-and-animations-2)
+    - [API Integration](#api-integration-4)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -599,6 +603,43 @@ The Cart Store is implemented using **Zustand** for state management. It handles
 ### State Management
 - The Cart Store uses **Zustand** for efficient and lightweight state management.
 - It ensures that the cart state is synchronized with the backend and provides real-time updates to the UI.
+
+## Cart Page
+
+The Cart Page allows users to view and manage the products they have added to their shopping cart. It provides a seamless and interactive experience for managing cart items, applying coupons, and proceeding to checkout.
+
+### Features
+1. **Cart Items Display**:  
+   - Displays all products added to the cart, including their name, description, price, quantity, and image.
+   - Users can increase or decrease the quantity of each product or remove it from the cart.
+
+2. **Order Summary**:  
+   - Shows a summary of the cart, including the subtotal, applied discounts, and the total price.
+   - Provides a "Proceed to Checkout" button for initiating the payment process.
+
+3. **Coupon Management**:  
+   - Allows users to apply a coupon code for discounts.
+   - Displays the applied coupon and its discount percentage.
+   - Users can remove the applied coupon if needed.
+
+4. **Recommendations**:  
+   - Displays a "People Also Bought" section with recommended products based on other users' purchases.
+
+5. **Empty Cart UI**:  
+   - If the cart is empty, a message is displayed with a link to start shopping.
+
+### Styling and Animations
+- The page is styled using **TailwindCSS** for a modern and responsive design.
+- **Framer Motion** is used for smooth animations when elements are displayed or updated.
+
+### API Integration
+- The Cart Page interacts with the backend using the following endpoints:
+  - `GET /api/cart`: Fetches all products in the user's cart.
+  - `POST /api/cart`: Adds a product to the cart.
+  - `PUT /api/cart/:id`: Updates the quantity of a product in the cart.
+  - `DELETE /api/cart`: Removes a product or clears the cart.
+  - `POST /api/coupons/validate`: Validates and applies a coupon.
+  - `POST /api/payments/create-checkout-session`: Initiates the Stripe checkout session.
 
 ## Deployment
 
