@@ -7,13 +7,18 @@ A brief description of the project, its purpose, and the main features.
 - [E-Commerce Store](#e-commerce-store)
   - [Table of Contents](#table-of-contents)
   - [Project Overview](#project-overview)
+    - [Goals:](#goals)
+    - [Problems Solved:](#problems-solved)
   - [User Experience (UX)](#user-experience-ux)
+  - [**Live Demo**: https://react-ecommerce-store.onrender.com/](#live-demo-httpsreact-ecommerce-storeonrendercom)
+  - [Responsive Design](#responsive-design)
     - [User Stories](#user-stories)
     - [Design](#design)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
   - [Backend Setup](#backend-setup)
   - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
   - [Authentication - Access \& Refresh Tokens](#authentication---access--refresh-tokens)
     - [Access Token](#access-token)
     - [Refresh Token](#refresh-token)
@@ -69,45 +74,53 @@ A brief description of the project, its purpose, and the main features.
   - [Cart Store](#cart-store)
     - [Features](#features-7)
     - [API Integration](#api-integration-3)
-    - [State Management](#state-management)
-  - [Cart Page](#cart-page)
-    - [Features](#features-8)
-    - [Styling and Animations](#styling-and-animations-2)
-    - [API Integration](#api-integration-4)
-  - [Stripe Payments Integration](#stripe-payments-integration)
-    - [Features](#features-9)
-    - [Implementation Details](#implementation-details)
-    - [Setup Instructions](#setup-instructions)
-  - [Coupons Management](#coupons-management)
-    - [Features](#features-10)
-    - [Implementation Details](#implementation-details-1)
-  - [Analytics Dashboard](#analytics-dashboard)
-    - [Features](#features-11)
-    - [Implementation Details](#implementation-details-2)
-  - [Featured Products Slider](#featured-products-slider)
-    - [Features](#features-12)
-    - [Implementation Details](#implementation-details-3)
-    - [Setup Instructions](#setup-instructions-1)
-  - [Axios Interceptors for Token Refresh](#axios-interceptors-for-token-refresh)
-    - [Features](#features-13)
-    - [Implementation Details](#implementation-details-4)
-    - [Setup Instructions](#setup-instructions-2)
   - [Deployment](#deployment)
+    - [How to Deploy on Render.com](#how-to-deploy-on-rendercom)
   - [Credits](#credits)
+    - [Code](#code)
     - [Content](#content)
-    - [Acknowledgements](#acknowledgements)
+    - [Acknowledgments](#acknowledgments)
 
 ---
 
 ## Project Overview
 
-Provide an overview of the project, including its goals and the problem it solves.
+The E-Commerce Store is a full-stack web application designed to provide a seamless online shopping experience. It allows users to browse products, add items to their cart, apply discount coupons, and securely complete purchases using Stripe. The project also includes an admin dashboard for managing products, viewing analytics, and monitoring sales.
+
+### Goals:
+- Deliver a responsive and user-friendly interface for customers.
+- Provide secure authentication and authorization using JWT-based access and refresh tokens.
+- Enable efficient product management and analytics for administrators.
+- Integrate modern technologies like React, TailwindCSS, and Stripe for a robust and scalable solution.
+
+### Problems Solved:
+- Simplifies online shopping with features like cart management, coupon application, and product recommendations.
+- Enhances security with token-based authentication and secure payment processing.
+- Improves performance with caching (Upstash Redis) and optimized API endpoints.
+- Provides actionable insights for administrators through analytics and sales data visualization.
 
 ## User Experience (UX)
 
+## **Live Demo**: [https://react-ecommerce-store.onrender.com/](https://react-ecommerce-store.onrender.com/)
+
+## Responsive Design
+
+![Responsive Design](frontend/public/amiresponsive.png)
+
 ### User Stories
 
-List the user stories that guided the development of the project.
+The following user stories guided the development of the E-Commerce Store:
+
+1. **As a customer**, I want to browse products by category so that I can easily find what I am looking for.
+2. **As a customer**, I want to add products to my cart and update quantities so that I can manage my purchases.
+3. **As a customer**, I want to apply discount coupons so that I can save money on my purchases.
+4. **As a customer**, I want to securely complete my purchase using a reliable payment system.
+5. **As a customer**, I want to view recommended products so that I can discover new items.
+6. **As an admin**, I want to manage products (add, update, delete) so that I can keep the inventory up to date.
+7. **As an admin**, I want to view analytics (sales, revenue, users) so that I can monitor the store's performance.
+8. **As a user**, I want to sign up and log in securely so that I can access my account and purchase history.
+9. **As a user**, I want to receive error messages for invalid inputs so that I can correct my actions.
+10. **As a user**, I want the application to work seamlessly on all devices so that I can shop from anywhere.
 
 ### Design
 
@@ -159,10 +172,30 @@ To set up and run the backend, follow these steps:
 
 ## Testing
 
-Describe the testing process, including:
-- Manual testing
-- Automated testing (if applicable)
-- Bugs and fixes
+### Manual Testing
+
+| Feature                          | Test Case                                                                                     | Expected Result                                                                                     | Status  |
+|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|---------|
+| **Authentication**               | User signs up with valid credentials                                                         | User account is created, and tokens are issued                                                     | ✅ Passed |
+|                                  | User logs in with valid credentials                                                          | User is authenticated, and tokens are issued                                                       | ✅ Passed |
+|                                  | User logs out                                                                                 | Tokens are cleared, and session is invalidated                                                     | ✅ Passed |
+|                                  | Access token expires, and refresh token is used                                               | New access token is issued                                                                          | ✅ Passed |
+| **Products**                     | Admin creates a new product                                                                  | Product is added to the database and displayed in the product list                                  | ✅ Passed |
+|                                  | Admin toggles the "Featured" status of a product                                             | Product's "Featured" status is updated                                                             | ✅ Passed |
+|                                  | Admin deletes a product                                                                      | Product is removed from the database                                                               | ✅ Passed |
+|                                  | User fetches products by category                                                            | Products filtered by category are displayed                                                        | ✅ Passed |
+| **Cart**                         | User adds a product to the cart                                                              | Product is added to the cart, and quantity is updated if it already exists                         | ✅ Passed |
+|                                  | User updates the quantity of a product in the cart                                           | Product quantity is updated                                                                        | ✅ Passed |
+|                                  | User removes a product from the cart                                                         | Product is removed from the cart                                                                   | ✅ Passed |
+|                                  | User applies a valid coupon                                                                  | Discount is applied, and total price is updated                                                    | ✅ Passed |
+|                                  | User applies an invalid coupon                                                               | Error message is displayed                                                                         | ✅ Passed |
+| **Payments**                     | User initiates a checkout session                                                            | Stripe checkout session is created                                                                 | ✅ Passed |
+|                                  | User completes payment successfully                                                          | Order is created, and cart is cleared                                                              | ✅ Passed |
+|                                  | User cancels payment                                                                         | Cart remains unchanged, and cancellation message is displayed                                      | ✅ Passed |
+| **Analytics**                    | Admin views analytics dashboard                                                              | Metrics (e.g., total users, sales, revenue) and daily trends are displayed                         | ✅ Passed |
+| **Responsive Design**            | Application is accessed on different screen sizes                                            | Layout adjusts appropriately for mobile, tablet, and desktop views                                 | ✅ Passed |
+| **Error Handling**               | User accesses a protected route without authentication                                       | User is redirected to the login page                                                               | ✅ Passed |
+|                                  | User provides invalid input (e.g., empty fields)                                             | Error messages are displayed                                                                       | ✅ Passed |
 
 
 
@@ -615,195 +648,70 @@ The Cart Store is implemented using **Zustand** for state management. It handles
   - `POST /api/cart`: Adds a product to the cart.
   - `DELETE /api/cart`: Removes a product or clears the cart.
   - `PUT /api/cart/:id`: Updates the quantity of a product in the cart.
-  - `GET /api/coupons`: Fetches the user's active coupon.
-  - `POST /api/coupons/validate`: Validates and applies a coupon.
-
-### State Management
-- The Cart Store uses **Zustand** for efficient and lightweight state management.
-- It ensures that the cart state is synchronized with the backend and provides real-time updates to the UI.
-
-## Cart Page
-
-The Cart Page allows users to view and manage the products they have added to their shopping cart. It provides a seamless and interactive experience for managing cart items, applying coupons, and proceeding to checkout.
-
-### Features
-1. **Cart Items Display**:  
-   - Displays all products added to the cart, including their name, description, price, quantity, and image.
-   - Users can increase or decrease the quantity of each product or remove it from the cart.
-
-2. **Order Summary**:  
-   - Shows a summary of the cart, including the subtotal, applied discounts, and the total price.
-   - Provides a "Proceed to Checkout" button for initiating the payment process.
-
-3. **Coupon Management**:  
-   - Allows users to apply a coupon code for discounts.
-   - Displays the applied coupon and its discount percentage.
-   - Users can remove the applied coupon if needed.
-
-4. **Recommendations**:  
-   - Displays a "People Also Bought" section with recommended products based on other users' purchases.
-
-5. **Empty Cart UI**:  
-   - If the cart is empty, a message is displayed with a link to start shopping.
-
-### Styling and Animations
-- The page is styled using **TailwindCSS** for a modern and responsive design.
-- **Framer Motion** is used for smooth animations when elements are displayed or updated.
-
-### API Integration
-- The Cart Page interacts with the backend using the following endpoints:
-  - `GET /api/cart`: Fetches all products in the user's cart.
-  - `POST /api/cart`: Adds a product to the cart.
-  - `PUT /api/cart/:id`: Updates the quantity of a product in the cart.
-  - `DELETE /api/cart`: Removes a product or clears the cart.
-  - `POST /api/coupons/validate`: Validates and applies a coupon.
-  - `POST /api/payments/create-checkout-session`: Initiates the Stripe checkout session.
-
-## Stripe Payments Integration
-
-This project integrates Stripe for secure payment processing.
-
-### Features
-- **Checkout Process**: Users can securely complete their purchases using Stripe Checkout.
-- **Payment Intents**: Handles payment lifecycles using Stripe's Payment Intents API.
-- **Cart Management**: Automatically clears the cart upon successful payment.
-- **Environment Variables**: Uses `STRIPE_PUBLIC_KEY` for the frontend and `STRIPE_SECRET_KEY` for the backend to securely manage API keys.
-
-### Implementation Details
-- **Frontend**:
-  - `OrderSummary.jsx`: Initiates the payment process by creating a Stripe Checkout session.
-  - `PurchaseSuccessPage.jsx`: Handles post-payment success logic, including clearing the cart.
-  - `PurchaseCancelPage.jsx`: Displays a cancellation message if the payment is not completed.
-  - Uses `@stripe/stripe-js` for secure payment tokenization and redirection.
-- **Backend**:
-  - `payment.route.js`: Defines routes for creating checkout sessions and handling payment success.
-  - `payment.controller.js`: Contains logic for interacting with Stripe's API.
-  - Protects sensitive routes using middleware.
-
-### Setup Instructions
-1. **Environment Variables**:
-   - Add `STRIPE_PUBLIC_KEY` to your `.env` file for the frontend.
-   - Add `STRIPE_SECRET_KEY` to your `.env` file for the backend.
-
-2. **Testing Payments**:
-   - Use Stripe's test card numbers (e.g., `4242 4242 4242 4242`) to simulate payments in test mode.
-
-For more details, refer to the [Stripe Documentation](https://stripe.com/docs).
-
-
-## Coupons Management
-
-This project includes a feature to manage and apply coupons for discounts.
-
-### Features
-- **Coupon Application**: Users can apply coupon codes to receive discounts on their orders.
-- **Coupon Validation**: Validates coupon codes before applying them to ensure they are active and applicable.
-- **Coupon Removal**: Users can remove applied coupons if they change their mind.
-- **Available Coupons Display**: Displays available coupons for the user.
-
-### Implementation Details
-- **Frontend**:
-  - `GiftCouponCard.jsx`: Handles the UI for applying, validating, and removing coupons.
-  - `useCartStore.js`: Manages the state of coupons and integrates with the backend for validation.
-- **Backend**:
-  - `coupon.route.js`: Defines routes for fetching and validating coupons.
-  - `coupon.controller.js`: Contains the logic for coupon validation and retrieval.
-
----
-
-## Analytics Dashboard
-
-The project includes an analytics dashboard for administrators to monitor key metrics.
-
-### Features
-- **User Analytics**: Displays the total number of users.
-- **Product Analytics**: Shows the total number of products.
-- **Sales Analytics**: Tracks the total number of sales.
-- **Revenue Analytics**: Displays the total revenue generated.
-- **Daily Sales Chart**: Visualizes daily sales and revenue trends using a line chart.
-
-### Implementation Details
-- **Frontend**:
-  - `AnalyticsTab.jsx`: Displays the analytics dashboard with cards for key metrics and a line chart for daily trends.
-- **Backend**:
-  - `analytics.route.js`: Provides endpoints for fetching analytics data.
-  - `analytics.controller.js`: Contains the logic for aggregating and returning analytics data.
-
----
-
-For more details, refer to the respective components and backend routes.
-
-
-## Featured Products Slider
-
-This project includes a responsive slider to showcase featured products.
-
-### Features
-- **Responsive Design**: Adjusts the number of items displayed based on the screen size.
-- **Smooth Transitions**: Provides smooth sliding animations for a better user experience.
-- **Add to Cart**: Allows users to add featured products directly to their cart.
-- **Navigation Controls**: Includes "Previous" and "Next" buttons to navigate through the slider.
-
-### Implementation Details
-- **Frontend**:
-  - `FeaturedProducts.jsx`: Implements the slider functionality and handles responsiveness.
-  - Uses `lucide-react` for navigation icons and `zustand` for cart state management.
-- **Backend**:
-  - Provides an API endpoint to fetch featured products.
-
-### Setup Instructions
-1. **API Integration**:
-   - Ensure the backend provides a route to fetch featured products.
-   - Example: `/api/products/featured`.
-
-2. **Frontend Integration**:
-   - Pass the `featuredProducts` prop to the `FeaturedProducts` component with the data fetched from the backend.
-
-3. **Usage**:
-   - Include the `FeaturedProducts` component in the desired page or section of the application.
-
-For more details, refer to the `FeaturedProducts.jsx` component.
-
-
-## Axios Interceptors for Token Refresh
-
-This project includes Axios interceptors to handle token expiration and automatic refresh.
-
-### Features
-- **Automatic Token Refresh**: Automatically refreshes the access token when it expires.
-- **Retry Failed Requests**: Retries the original request after successfully refreshing the token.
-- **Global Error Handling**: Logs out the user and clears the session if the refresh token is invalid or expired.
-
-### Implementation Details
-- **Frontend**:
-  - `useUserStore.js`: Implements the logic for refreshing tokens and managing user authentication state.
-  - Axios interceptors are configured to detect `401 Unauthorized` responses and trigger the token refresh process.
-- **Backend**:
-  - Provides endpoints for refreshing tokens and validating user sessions.
-
-### Setup Instructions
-1. **Environment Variables**:
-   - Ensure the backend provides a refresh token endpoint (e.g., `/auth/refresh-token`).
-   - Configure the frontend Axios instance to point to the correct backend base URL.
-
-2. **Usage**:
-   - The Axios interceptors are automatically applied to all requests.
-   - If a token expires, the interceptor will handle the refresh process seamlessly.
-
-For more details, refer to the `useUserStore.js` file.
 
 ## Deployment
 
-Successfully deployed on [Render.com](https://render.com).
+### How to Deploy on Render.com
+
+Follow these steps to deploy the E-Commerce Store on [Render.com](https://render.com):
+
+1. **Create a Render Account**:
+   - Sign up for a free account on [Render.com](https://render.com).
+
+2. **Connect GitHub Repository**:
+   - Link your GitHub account to Render.
+   - Import the repository containing the E-Commerce Store project.
+
+3. **Create a Web Service for the Backend**:
+   - Click on "New +" and select "Web Service".
+   - Choose the repository and branch (e.g., `main`) for the backend.
+   - Set the build command:
+     ```bash
+     npm install && npm run build
+     ```
+   - Set the start command:
+     ```bash
+     npm run start
+     ```
+   - Add the required environment variables (e.g., `PORT`, `MONGO_URI`, `ACCESS_TOKEN_SECRET`, etc.) in the "Environment" section.
+
+4. **Create a Static Site for the Frontend**:
+   - Click on "New +" and select "Static Site".
+   - Choose the repository and branch (e.g., `main`) for the frontend.
+   - Set the build command:
+     ```bash
+     npm install && npm run build
+     ```
+   - Set the publish directory:
+     ```
+     frontend/dist
+     ```
+
+5. **Configure Environment Variables**:
+   - Add any required environment variables for the backend and frontend in their respective services.
+
+6. **Deploy**:
+   - Click "Deploy" to start the deployment process.
+   - Monitor the build logs to ensure the deployment is successful.
+
+7. **Access the Live Application**:
+   - Once deployed, Render will provide a URL for the backend and frontend services.
+   - Update the `CLIENT_URL` environment variable in the backend to point to the frontend URL.
 
 **Live Demo**: [https://react-ecommerce-store.onrender.com/](https://react-ecommerce-store.onrender.com/)
 
 ## Credits
 
+### Code
+- Inspired by Code Institute's walkthrough projects.
+- Additional implementation ideas were drawn from open-source e-commerce projects on GitHub.
+
 ### Content
+- Custom content created specifically for the E-Commerce Store project.
+- Product descriptions and images were sourced from free online resources like [Unsplash](https://unsplash.com/) and [Pexels](https://www.pexels.com/).
 
-Mention any sources of content, such as text or images.
-
-### Acknowledgements
-
-Acknowledge any individuals or organizations that helped with the project.
+### Acknowledgments
+- **Mentorship**: Special thanks to my mentor for their invaluable guidance and support throughout the project.
+- **Resources**: Utilized various online resources, including [MDN Web Docs](https://developer.mozilla.org/) and [Stack Overflow](https://stackoverflow.com/), for learning and troubleshooting.
+- **Community**: Gratitude to the open-source community for providing tools and libraries that made this project possible.
+- **Render.com**: Thanks to Render for providing a seamless deployment platform.
