@@ -88,6 +88,10 @@ A brief description of the project, its purpose, and the main features.
     - [Features](#features-12)
     - [Implementation Details](#implementation-details-3)
     - [Setup Instructions](#setup-instructions-1)
+  - [Axios Interceptors for Token Refresh](#axios-interceptors-for-token-refresh)
+    - [Features](#features-13)
+    - [Implementation Details](#implementation-details-4)
+    - [Setup Instructions](#setup-instructions-2)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Content](#content)
@@ -790,9 +794,9 @@ For more details, refer to the `useUserStore.js` file.
 
 ## Deployment
 
-Explain how the project was deployed, including:
-- Deployment platform (e.g., GitHub Pages, Heroku, Azure)
-- Steps to deploy the project
+Successfully deployed on [Render.com](https://render.com).
+
+**Live Demo**: [https://react-ecommerce-store.onrender.com/](https://react-ecommerce-store.onrender.com/)
 
 ## Credits
 
